@@ -15,15 +15,22 @@
                 <i class="fas fa-redo"></i>
                 Làm mới
             </button>
-            <button class="btn btn-sm btn-success" @click="goToAddContact">
-                <i class="fas fa-plus"></i>
-                thêm mới
-            </button>
+            
+            <router-link :to="{
+                        name: 'AddContact',
+                    }">
+                <button class="btn btn-sm btn-success" @click="goToAddContact">
+                    <i class="fas fa-plus"></i>
+                        thêm mới
+                </button>
+            </router-link>
 
             <button class="btn btn-sm btn-danger" @click="removeAllContacts">
                 <i class="fas fa-trash"></i>
                 Xóa tất cả
             </button>
+
+            
 
         </div>
     </div>
@@ -36,13 +43,13 @@
             </h4>
             <ContactCard :contact="activeContact" />
 
-            <!-- <router-link :to="{
+            <router-link :to="{
                         name: 'EditContact',
                         params: { id: activeContact.id },
-                    }"> -->
+                    }">
                 <span class="mt-2 badge badge-warning">
                     <i class="fas fa-edit"></i> Hiệu chỉnh</span>
-            <!-- </router-link> -->
+            </router-link>
         </div>
     </div>
 </div>
@@ -122,7 +129,7 @@ export default {
         },
 
         async removeAllContacts() {
-            if (comfirm("Bạn muốn xóa tất cả liên hệ?")) {
+            if (confirm("Bạn muốn xóa tất cả liên hệ?")) {
                 try {
                     await ContactService.deleteAll();
                     this.refreshList()

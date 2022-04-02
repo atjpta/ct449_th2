@@ -12,6 +12,18 @@ const routes = [
         name: "NotFound",
         component: () => import("@/views/NotFound.vue"),
     },
+    {
+        path: "/contacts/:id",
+        name: "EditContact",
+        component: () => import("@/views/ContactEdit.vue"),
+        props: true,
+    },
+    {
+        path: "/contacts/",
+        name: "AddContact",
+        component: () => import("@/views/ContactAdd.vue"),
+        props: true,
+    },
 ];
 
 const router = createRouter({
